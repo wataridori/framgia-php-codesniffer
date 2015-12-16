@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ruleset name="Framgia">
+ <description>The Coding Standard package for Code Sniffer to check whether your codes satisfy the Framgia Standard or not.</description>
+ <arg name="tab-width" value="4"/>
+
+ <rule ref="PSR2"/>
+ <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
+ <rule ref="Generic.PHP.LowerCaseKeyword"/>
+ <rule ref="Generic.PHP.LowerCaseConstant"/>
+ <rule ref="Generic.Formatting.SpaceAfterCast"/>
+</ruleset>
