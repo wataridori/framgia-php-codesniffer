@@ -10,4 +10,5 @@
  <rule ref="Generic.Formatting.SpaceAfterCast"/>
 
  <rule ref="./Sniffs/Array/ArrayDeclarationSniff.php"/>
+  <rule ref="./Sniffs/String/DoubleQuoteUsageSniff.php"/>
 </ruleset>
