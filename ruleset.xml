@@ -4,10 +4,15 @@
  <arg name="tab-width" value="4"/>
 
  <rule ref="PSR2"/>
- <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
- <rule ref="Generic.PHP.LowerCaseKeyword"/>
- <rule ref="Generic.PHP.LowerCaseConstant"/>
- <rule ref="Generic.Formatting.SpaceAfterCast"/>
+ <rule ref="Squiz.WhiteSpace.CastSpacing"/>
+ <rule ref="Squiz.WhiteSpace.ControlStructureSpacing"/>
+ <rule ref="Squiz.WhiteSpace.FunctionClosingBraceSpace"/>
+ <rule ref="Squiz.WhiteSpace.FunctionOpeningBraceSpace"/>
+ <rule ref="Squiz.WhiteSpace.FunctionSpacing"/>
+ <rule ref="Squiz.WhiteSpace.LanguageConstructSpacing"/>
+ <rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing"/>
+ <rule ref="Squiz.WhiteSpace.ObjectOperatorSpacing"/>
+ <rule ref="Squiz.WhiteSpace.SemicolonSpacing"/>
 
  <rule ref="./Sniffs/Array/ArrayDeclarationSniff.php"/>
  <rule ref="./Sniffs/String/DoubleQuoteUsageSniff.php"/>
