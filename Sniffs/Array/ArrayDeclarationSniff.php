@@ -492,7 +492,7 @@ class Framgia_Sniffs_Array_ArrayDeclarationSniff implements PHP_CodeSniffer_Snif
             // Array cannot be empty, so this is a multi-line array with
             // a single value. It should be defined on single line.
             $error = 'Multi-line array contains a single value; use single-line array instead';
-            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'MultiLineNotAllowed');
+            $fix   = $phpcsFile->addWarning($error, $stackPtr, 'MultiLineNotAllowed');
 
             if ($fix === true) {
                 $phpcsFile->fixer->beginChangeset();
