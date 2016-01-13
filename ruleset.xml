@@ -6,13 +6,9 @@
  <rule ref="PSR2"/>
  <rule ref="Squiz.WhiteSpace.CastSpacing"/>
  <rule ref="Squiz.WhiteSpace.ControlStructureSpacing"/>
- <rule ref="Squiz.WhiteSpace.FunctionClosingBraceSpace"/>
  <rule ref="Squiz.WhiteSpace.FunctionOpeningBraceSpace"/>
- <rule ref="Squiz.WhiteSpace.FunctionSpacing"/>
  <rule ref="Squiz.WhiteSpace.LanguageConstructSpacing"/>
  <rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing"/>
- <rule ref="Squiz.WhiteSpace.ObjectOperatorSpacing"/>
- <rule ref="Squiz.WhiteSpace.SemicolonSpacing"/>
 
  <rule ref="./Sniffs/Array/ArrayDeclarationSniff.php"/>
  <rule ref="./Sniffs/String/DoubleQuoteUsageSniff.php"/>
