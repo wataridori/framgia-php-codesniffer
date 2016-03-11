@@ -27,3 +27,13 @@ phpcs --standard=Framgia /path/to/your/code
 ```
 phpcs --standard=/path/to/your/framgia-php-codesniffer /path/to/your/code
 ```
+- It's a pity that the default encoding used by PHP_CodeSniffer is ISO-8859-1. **Yes, it is not UTF-8**.
+Therefore, you will have some problems with the words counter if you use Japanese in your codes.
+You'd better change the default encoding to `UTF-8`.
+```
+phpcs --config-set encoding utf-8
+```
+Or set the encoding to `UTF-8` when running the command.
+```
+phpcs --standard=Framgia /path/to/your/code --encoding=utf-8
+```
