@@ -473,7 +473,8 @@ class Framgia_Sniffs_Array_ArrayDeclarationSniff implements PHP_CodeSniffer_Snif
             }//end if
         }//end for
 
-        // Check for mutli-line arrays that should be single-line.
+        // Check for multi-line arrays that should be single-line.
+        /*
         $singleValue = false;
 
         if (empty($indices) === true) {
@@ -517,6 +518,7 @@ class Framgia_Sniffs_Array_ArrayDeclarationSniff implements PHP_CodeSniffer_Snif
 
             return;
         }//end if
+        */
 
         /*
             This section checks for arrays that don't specify keys.
