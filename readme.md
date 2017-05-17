@@ -4,6 +4,7 @@
 - **[PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)** is a set of two PHP scripts; the main phpcs script that tokenizes PHP, JavaScript and CSS files to detect violations of a defined coding standard, and a second phpcbf script to automatically correct coding standard violations. **[PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)** is an essential development tool that ensures your code remains clean and consistent.
 - **[Framgia PHP Standard](https://github.com/framgia/coding-standards/blob/master/eng/README.md#php)** is a set of coding conventions used by PHP team in [Framgia Vietnam](http://framgia.vn/). It is based on the [PSR-2 Coding Style Guide](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) with some additional rules.
 - This is the Coding Standard package for Code Sniffer to check whether your codes satisfy the Framgia Standard or not.
+- **New**: This standard is compatible with both PHP CodeSniffer version 2 and 3. If you are using PHP CodeSniffer 2, please use the codes in `0.2` branch. If you are using PHP CodeSniffer 3, use the codes in `master` branch.
 
 ## Install
 - Install `PHP_CodeSniffer` globally by `composer`. Make sure you have `~/.composer/vendor/bin/` in your `PATH`.
@@ -14,6 +15,8 @@ composer global require "squizlabs/php_codesniffer=*"
 ```
 // Version 2
 cd ~/.composer/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards
+git clone -b 0.2 git@github.com:wataridori/framgia-php-codesniffer.git Framgia
+
 // Version 3
 cd ~/.composer/vendor/squizlabs/php_codesniffer/src/Standards
 git clone git@github.com:wataridori/framgia-php-codesniffer.git Framgia
