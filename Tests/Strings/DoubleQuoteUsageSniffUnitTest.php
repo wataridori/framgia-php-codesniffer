@@ -3,7 +3,10 @@
  * Unit test class for the DoubleQuoteUsageSniff sniff.
  */
 
-class Framgia_Tests_String_DoubleQuoteUsageSniffUnitTest extends AbstractSniffUnitTest
+namespace Framgia\Tests\Strings;
+use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
+
+class DoubleQuoteUsageSniffUnitTest extends AbstractSniffUnitTest
 {
 
 

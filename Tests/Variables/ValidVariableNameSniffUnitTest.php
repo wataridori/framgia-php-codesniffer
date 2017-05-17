@@ -1,9 +1,12 @@
 <?php
 /**
- * Unit test class for the ArrayDeclaration sniff.
+ * Unit test class for the ValidVariableNameSniff sniff.
  */
 
-class Framgia_Tests_Array_ArrayDeclarationUnitTest extends AbstractSniffUnitTest
+namespace Framgia\Tests\Variables;
+use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
+
+class ValidVariableNameSniffUnitTest extends AbstractSniffUnitTest
 {
 
 
@@ -19,12 +22,9 @@ class Framgia_Tests_Array_ArrayDeclarationUnitTest extends AbstractSniffUnitTest
     {
         return [
             3 => 1,
-            5 => 1,
-            6 => 2,
-            7 => 1,
-            8 => 2,
-            10 => 2,
-            12 => 2,
+            13 => 1,
+            14 => 1,
+            16 => 1,
         ];
 
     }//end getErrorList()
@@ -40,7 +40,9 @@ class Framgia_Tests_Array_ArrayDeclarationUnitTest extends AbstractSniffUnitTest
      */
     public function getWarningList()
     {
-        return [];
+        return [
+            1 => 1,
+        ];
 
     }//end getWarningList()
 
