@@ -5,7 +5,12 @@
  * Makes sure that any use of Double Quotes ("") are warranted.
  *
  */
-class Framgia_Sniffs_String_DoubleQuoteUsageSniff implements PHP_CodeSniffer_Sniff
+namespace Framgia\Sniffs\Strings;
+
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
+
+class DoubleQuoteUsageSniff implements Sniff
 {
 
 
@@ -20,20 +25,19 @@ class Framgia_Sniffs_String_DoubleQuoteUsageSniff implements PHP_CodeSniffer_Sni
             T_CONSTANT_ENCAPSED_STRING,
             T_DOUBLE_QUOTED_STRING,
         ];
-
     }//end register()
 
 
     /**
      * Processes this test, when one of its tokens is encountered.
      *
-     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     * @param File $phpcsFile The file being scanned.
      * @param int                  $stackPtr  The position of the current token
      *                                        in the stack passed in $tokens.
      *
      * @return void
      */
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
@@ -94,7 +98,7 @@ class Framgia_Sniffs_String_DoubleQuoteUsageSniff implements PHP_CodeSniffer_Sni
         }
 
         $error = 'String %s does not require double quotes; use single quotes instead';
-        $data  = array(str_replace("\n", '\n', $workingString));
+        $data  = [str_replace("\n", '\n', $workingString)];
         $phpcsFile->addError($error, $stackPtr, 'NotRequired', $data);
     }//end process()
 }//end class

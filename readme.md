@@ -12,7 +12,10 @@ composer global require "squizlabs/php_codesniffer=*"
 ```
 - Move to **Standards** folder and clone this repository
 ```
+// Version 2
 cd ~/.composer/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards
+// Version 3
+cd ~/.composer/vendor/squizlabs/php_codesniffer/src/Standards
 git clone git@github.com:wataridori/framgia-php-codesniffer.git Framgia
 ```
 - Check whether the Framgia Standard has been installed succesfully or not

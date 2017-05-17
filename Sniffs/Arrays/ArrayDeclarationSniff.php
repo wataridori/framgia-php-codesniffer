@@ -3,7 +3,13 @@
  * A test to ensure that arrays conform to the array coding standard. Use [] instead of array()
  */
 
-class Framgia_Sniffs_Array_ArrayDeclarationSniff implements PHP_CodeSniffer_Sniff
+namespace Framgia\Sniffs\Arrays;
+
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Util\Tokens;
+
+class ArrayDeclarationSniff implements Sniff
 {
 
 
@@ -18,20 +24,19 @@ class Framgia_Sniffs_Array_ArrayDeclarationSniff implements PHP_CodeSniffer_Snif
             T_ARRAY,
             T_OPEN_SHORT_ARRAY,
         ];
-
     }//end register()
 
 
     /**
      * Processes this sniff, when one of its tokens is encountered.
      *
-     * @param PHP_CodeSniffer_File $phpcsFile The current file being checked.
+     * @param File $phpcsFile The current file being checked.
      * @param int                  $stackPtr  The position of the current token in
      *                                        the stack passed in $tokens.
      *
      * @return void
      */
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
@@ -69,14 +74,13 @@ class Framgia_Sniffs_Array_ArrayDeclarationSniff implements PHP_CodeSniffer_Snif
         } else {
             $this->processMultiLineArray($phpcsFile, $stackPtr, $arrayStart, $arrayEnd);
         }
-
     }//end process()
 
 
     /**
      * Processes a single-line array definition.
      *
-     * @param PHP_CodeSniffer_File $phpcsFile  The current file being checked.
+     * @param File $phpcsFile  The current file being checked.
      * @param int                  $stackPtr   The position of the current token
      *                                         in the stack passed in $tokens.
      * @param int                  $arrayStart The token that starts the array definition.
@@ -84,7 +88,7 @@ class Framgia_Sniffs_Array_ArrayDeclarationSniff implements PHP_CodeSniffer_Snif
      *
      * @return void
      */
-    public function processSingleLineArray(PHP_CodeSniffer_File $phpcsFile, $stackPtr, $arrayStart, $arrayEnd)
+    public function processSingleLineArray(File $phpcsFile, $stackPtr, $arrayStart, $arrayEnd)
     {
         $tokens = $phpcsFile->getTokens();
 
@@ -218,14 +222,13 @@ class Framgia_Sniffs_Array_ArrayDeclarationSniff implements PHP_CodeSniffer_Snif
                 }
             }//end foreach
         }//end if
-
     }//end processSingleLineArray()
 
 
     /**
      * Processes a multi-line array definition.
      *
-     * @param PHP_CodeSniffer_File $phpcsFile  The current file being checked.
+     * @param File $phpcsFile  The current file being checked.
      * @param int                  $stackPtr   The position of the current token
      *                                         in the stack passed in $tokens.
      * @param int                  $arrayStart The token that starts the array definition.
@@ -233,7 +236,7 @@ class Framgia_Sniffs_Array_ArrayDeclarationSniff implements PHP_CodeSniffer_Snif
      *
      * @return void
      */
-    public function processMultiLineArray(PHP_CodeSniffer_File $phpcsFile, $stackPtr, $arrayStart, $arrayEnd)
+    public function processMultiLineArray(File $phpcsFile, $stackPtr, $arrayStart, $arrayEnd)
     {
         $tokens       = $phpcsFile->getTokens();
         $keywordStart = $tokens[$stackPtr]['column'];
@@ -382,7 +385,7 @@ class Framgia_Sniffs_Array_ArrayDeclarationSniff implements PHP_CodeSniffer_Snif
                     }
 
                     $valueContent = $phpcsFile->findNext(
-                        PHP_CodeSniffer_Tokens::$emptyTokens,
+                        Tokens::$emptyTokens,
                         ($lastToken + 1),
                         $nextToken,
                         true
@@ -451,7 +454,10 @@ class Framgia_Sniffs_Array_ArrayDeclarationSniff implements PHP_CodeSniffer_Snif
                     $currentEntry['index_content'] = $tokens[$indexEnd]['content'];
                 } else {
                     $currentEntry['index']         = $indexStart;
-                    $currentEntry['index_content'] = $phpcsFile->getTokensAsString($indexStart, ($indexEnd - $indexStart + 1));
+                    $currentEntry['index_content'] = $phpcsFile->getTokensAsString(
+                            $indexStart,
+                            ($indexEnd - $indexStart + 1)
+                        );
                 }
 
                 $indexLength = strlen($currentEntry['index_content']);
@@ -461,7 +467,7 @@ class Framgia_Sniffs_Array_ArrayDeclarationSniff implements PHP_CodeSniffer_Snif
 
                 // Find the value of this index.
                 $nextContent = $phpcsFile->findNext(
-                    PHP_CodeSniffer_Tokens::$emptyTokens,
+                    Tokens::$emptyTokens,
                     ($nextToken + 1),
                     $arrayEnd,
                     true
@@ -536,7 +542,7 @@ class Framgia_Sniffs_Array_ArrayDeclarationSniff implements PHP_CodeSniffer_Snif
             $lastIndex = $indices[($count - 1)]['value'];
 
             $trailingContent = $phpcsFile->findPrevious(
-                PHP_CodeSniffer_Tokens::$emptyTokens,
+                Tokens::$emptyTokens,
                 ($arrayEnd - 1),
                 $lastIndex,
                 true
@@ -698,6 +704,5 @@ class Framgia_Sniffs_Array_ArrayDeclarationSniff implements PHP_CodeSniffer_Snif
                 }
             }
         }//end foreach
-
     }//end processMultiLineArray()
 } //end class

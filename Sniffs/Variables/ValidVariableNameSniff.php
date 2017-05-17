@@ -4,7 +4,13 @@
  *
  * Checks the naming of variables and member variables.
  */
-class Framgia_Sniffs_Variable_ValidVariableNameSniff extends PHP_CodeSniffer_Standards_AbstractVariableSniff
+namespace Framgia\Sniffs\Variables;
+
+use PHP_CodeSniffer\Sniffs\AbstractVariableSniff;
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Util\Common;
+
+class ValidVariableNameSniff extends AbstractVariableSniff
 {
 
     /**
@@ -21,13 +27,13 @@ class Framgia_Sniffs_Variable_ValidVariableNameSniff extends PHP_CodeSniffer_Sta
     /**
      * Processes this test, when one of its tokens is encountered.
      *
-     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     * @param File $phpcsFile The file being scanned.
      * @param int                  $stackPtr  The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
      */
-    protected function processVariable(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    protected function processVariable(File $phpcsFile, $stackPtr)
     {
         $tokens  = $phpcsFile->getTokens();
         $varName = ltrim($tokens[$stackPtr]['content'], '$');
@@ -59,13 +65,13 @@ class Framgia_Sniffs_Variable_ValidVariableNameSniff extends PHP_CodeSniffer_Sta
     /**
      * Processes class member variables.
      *
-     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     * @param File $phpcsFile The file being scanned.
      * @param int                  $stackPtr  The position of the current token in the
      *                                        stack passed in $tokens.
      *
      * @return void
      */
-    protected function processMemberVar(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    protected function processMemberVar(File $phpcsFile, $stackPtr)
     {
         // We do not care about class property
     }//end processMemberVar()
@@ -74,13 +80,13 @@ class Framgia_Sniffs_Variable_ValidVariableNameSniff extends PHP_CodeSniffer_Sta
     /**
      * Processes the variable found within a double quoted string.
      *
-     * @param PHP_CodeSniffer_File $phpcsFile The file being scanned.
+     * @param File $phpcsFile The file being scanned.
      * @param int                  $stackPtr  The position of the double quoted
      *                                        string.
      *
      * @return void
      */
-    protected function processVariableInString(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    protected function processVariableInString(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
@@ -99,7 +105,11 @@ class Framgia_Sniffs_Variable_ValidVariableNameSniff extends PHP_CodeSniffer_Sta
             'php_errormsg',
         ];
 
-        if (preg_match_all('|[^\\\]\${?([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)|', $tokens[$stackPtr]['content'], $matches) !== 0) {
+        if (preg_match_all(
+            '|[^\\\]\${?([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)|',
+            $tokens[$stackPtr]['content'],
+            $matches
+            ) !== 0) {
             foreach ($matches[1] as $varName) {
                 // If it's a php reserved var, then its ok.
                 if (in_array($varName, $phpReservedVars) === true) {
@@ -109,10 +119,9 @@ class Framgia_Sniffs_Variable_ValidVariableNameSniff extends PHP_CodeSniffer_Sta
                 $this->checkCamelCase($phpcsFile, $stackPtr, $varName);
             }
         }
-
     }//end processVariableInString()
 
-    private function checkCamelCase(PHP_CodeSniffer_File $phpcsFile, $stackPtr, $objVarName)
+    private function checkCamelCase(File $phpcsFile, $stackPtr, $objVarName)
     {
         $originalVarName = $objVarName;
         if (substr($objVarName, 0, 1) === '_') {
@@ -122,11 +131,10 @@ class Framgia_Sniffs_Variable_ValidVariableNameSniff extends PHP_CodeSniffer_Sta
             return;
         }
 
-        if (PHP_CodeSniffer::isCamelCaps($objVarName, false, true, false) === false) {
+        if (Common::isCamelCaps($objVarName, false, true, false) === false) {
             $error = 'Variable "%s" is not in valid camel caps format';
             $data  = [$originalVarName];
             $phpcsFile->addError($error, $stackPtr, 'NotCamelCaps', $data);
         }
     }
-
 }//end class

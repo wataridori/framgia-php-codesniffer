@@ -12,7 +12,7 @@
  <rule ref="Squiz.WhiteSpace.LanguageConstructSpacing"/>
  <rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing"/>
 
- <rule ref="./Sniffs/Array/ArrayDeclarationSniff.php"/>
- <rule ref="./Sniffs/String/DoubleQuoteUsageSniff.php"/>
- <rule ref="./Sniffs/Variable/ValidVariableNameSniff.php"/>
+ <rule ref="./Sniffs/Arrays/ArrayDeclarationSniff.php"/>
+ <rule ref="./Sniffs/Strings/DoubleQuoteUsageSniff.php"/>
+ <rule ref="./Sniffs/Variables/ValidVariableNameSniff.php"/>
 </ruleset>
