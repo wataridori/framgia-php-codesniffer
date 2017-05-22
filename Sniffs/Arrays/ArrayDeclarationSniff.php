@@ -487,7 +487,7 @@ class ArrayDeclarationSniff implements Sniff
             $singleValue = true;
         } elseif (count($indices) === 1 && $tokens[$lastToken]['code'] === T_COMMA) {
             // There may be another array value without a comma.
-            $exclude     = PHP_CodeSniffer_Tokens::$emptyTokens;
+            $exclude     = Tokens::$emptyTokens;
             $exclude[]   = T_COMMA;
             $nextContent = $phpcsFile->findNext($exclude, ($indices[0]['value'] + 1), $arrayEnd, true);
             if ($nextContent === false) {
@@ -647,7 +647,7 @@ class ArrayDeclarationSniff implements Sniff
                 }
 
                 // Skip to the end of multi-line strings.
-                if (isset(PHP_CodeSniffer_Tokens::$stringTokens[$tokens[$i]['code']]) === true) {
+                if (isset(Tokens::$stringTokens[$tokens[$i]['code']]) === true) {
                     $i = $phpcsFile->findNext($tokens[$i]['code'], ($i + 1), null, true);
                     $i--;
                     $valueLine = $tokens[$i]['line'];
