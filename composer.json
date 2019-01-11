@@ -1,0 +1,22 @@
+{
+    "name": "wataridori/framgia-php-codesniffer",
+    "description": "Framgia PHP Standards Checker by PHP CodeSniffer",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tran Duc Thang",
+            "email": "thangtd90@gmail.com",
+            "homepage": "https://thangtd.com",
+            "role": "Software Developer"
+        }
+    ],
+    "require": {
+        "squizlabs/php_codesniffer": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Framgia\\Sniffs\\": "Sniffs/"
+        }
+    },
+    "minimum-stability": "dev"
+}
