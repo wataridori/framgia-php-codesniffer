@@ -15,4 +15,11 @@
  <rule ref="./Sniffs/Arrays/ArrayDeclarationSniff.php"/>
  <rule ref="./Sniffs/Strings/DoubleQuoteUsageSniff.php"/>
  <rule ref="./Sniffs/Variables/ValidVariableNameSniff.php"/>
+
+ <rule ref="Generic.Files.LineLength">
+    <properties>
+        <property name="lineLimit" value="120" />
+        <property name="absoluteLineLimit" value="120" />
+    </properties>
+ </rule>
 </ruleset>
