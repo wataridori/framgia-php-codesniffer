@@ -4,12 +4,11 @@
  */
 
 namespace Framgia\Tests\Strings;
+
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class DoubleQuoteUsageSniffUnitTest extends AbstractSniffUnitTest
+class DoubleQuoteUsageUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -23,9 +22,7 @@ class DoubleQuoteUsageSniffUnitTest extends AbstractSniffUnitTest
         return [
             3 => 1,
         ];
-
     }//end getErrorList()
-
 
     /**
      * Returns the lines where warnings should occur.
@@ -38,8 +35,5 @@ class DoubleQuoteUsageSniffUnitTest extends AbstractSniffUnitTest
     public function getWarningList()
     {
         return [];
-
     }//end getWarningList()
-
-
 }//end class

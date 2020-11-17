@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <ruleset name="Framgia_PHPCS">
     <arg name="extensions" value="php" />
+    <file>./Framgia</file>
     <rule ref="Framgia" />
 </ruleset>

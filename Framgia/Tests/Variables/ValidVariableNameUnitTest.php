@@ -4,12 +4,11 @@
  */
 
 namespace Framgia\Tests\Variables;
+
 use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
 
-class ValidVariableNameSniffUnitTest extends AbstractSniffUnitTest
+class ValidVariableNameUnitTest extends AbstractSniffUnitTest
 {
-
-
     /**
      * Returns the lines where errors should occur.
      *
@@ -21,14 +20,11 @@ class ValidVariableNameSniffUnitTest extends AbstractSniffUnitTest
     public function getErrorList()
     {
         return [
-            3 => 1,
             13 => 1,
             14 => 1,
             16 => 1,
         ];
-
     }//end getErrorList()
-
 
     /**
      * Returns the lines where warnings should occur.
@@ -40,11 +36,6 @@ class ValidVariableNameSniffUnitTest extends AbstractSniffUnitTest
      */
     public function getWarningList()
     {
-        return [
-            1 => 1,
-        ];
-
+        return [];
     }//end getWarningList()
-
-
 }//end class
