@@ -1,5 +1,6 @@
 {
     "name": "wataridori/framgia-php-codesniffer",
+    "type": "phpcodesniffer-standard",
     "description": "Framgia PHP Standards Checker by PHP CodeSniffer",
     "license": "MIT",
     "authors": [
@@ -11,12 +12,13 @@
         }
     ],
     "require": {
+        "php": ">=5.4",
         "squizlabs/php_codesniffer": "^3.0"
     },
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Framgia\\Sniffs\\": "Sniffs/"
+            "Framgia\\": "Framgia/"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }
