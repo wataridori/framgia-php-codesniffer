@@ -7,6 +7,24 @@
 - **New**: This standard is compatible with both PHP CodeSniffer version 2 and 3. If you are using PHP CodeSniffer 2, please use the codes in `0.2` branch. If you are using PHP CodeSniffer 3, use the codes in `master` branch.
 
 ## Install
+### Install locally
+You can install in each project folder:
+```
+composer require --dev dealerdirect/phpcodesniffer-composer-installer
+composer require --dev wataridori/framgia-php-codesniffer
+```
+
+`phpcs` command will be installed to folder `vendor/bin`.
+
+Now you can check and run phpcs:
+```
+./vendor/bin/phpcs -i
+```
+```
+./vendor/bin/phpcs --standard=Framgia /path/to/your/code
+```
+
+### Install globally
 - Install `PHP_CodeSniffer` globally by `composer`. Make sure you have `~/.composer/vendor/bin/` in your `PATH`.
 ```
 composer global require "squizlabs/php_codesniffer=*"
