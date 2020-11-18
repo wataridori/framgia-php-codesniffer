@@ -25,7 +25,7 @@ Now you can check and run phpcs:
 ```
 
 ### Install globally
-- Install `PHP_CodeSniffer` globally by `composer`. Make sure you have `~/.composer/vendor/bin/` in your `PATH`.
+- [Install `PHP_CodeSniffer`](https://github.com/squizlabs/PHP_CodeSniffer#installation) globally by `composer`. Make sure you have `~/.composer/vendor/bin/` in your `PATH`.
 ```
 composer global require "squizlabs/php_codesniffer=*"
 ```
