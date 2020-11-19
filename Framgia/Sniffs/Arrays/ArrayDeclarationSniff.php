@@ -11,8 +11,6 @@ use PHP_CodeSniffer\Util\Tokens;
 
 class ArrayDeclarationSniff implements Sniff
 {
-
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -25,7 +23,6 @@ class ArrayDeclarationSniff implements Sniff
             T_OPEN_SHORT_ARRAY,
         ];
     }//end register()
-
 
     /**
      * Processes this sniff, when one of its tokens is encountered.
@@ -455,9 +452,9 @@ class ArrayDeclarationSniff implements Sniff
                 } else {
                     $currentEntry['index']         = $indexStart;
                     $currentEntry['index_content'] = $phpcsFile->getTokensAsString(
-                            $indexStart,
-                            ($indexEnd - $indexStart + 1)
-                        );
+                        $indexStart,
+                        ($indexEnd - $indexStart + 1)
+                    );
                 }
 
                 $indexLength = strlen($currentEntry['index_content']);

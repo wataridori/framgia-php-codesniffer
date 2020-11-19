@@ -7,20 +7,51 @@
 - **New**: This standard is compatible with both PHP CodeSniffer version 2 and 3. If you are using PHP CodeSniffer 2, please use the codes in `0.2` branch. If you are using PHP CodeSniffer 3, use the codes in `master` branch.
 
 ## Install
-- Install `PHP_CodeSniffer` globally by `composer`. Make sure you have `~/.composer/vendor/bin/` in your `PATH`.
+### Install locally
+You can install in each project folder:
+```
+composer require --dev dealerdirect/phpcodesniffer-composer-installer
+composer require --dev wataridori/framgia-php-codesniffer
+```
+
+`phpcs` command will be installed to folder `vendor/bin`.
+
+Now you can check and run phpcs:
+```
+./vendor/bin/phpcs -i
+```
+```
+./vendor/bin/phpcs --standard=Framgia /path/to/your/code
+```
+
+### Install globally
+- [Install `PHP_CodeSniffer`](https://github.com/squizlabs/PHP_CodeSniffer#installation) globally by `composer`. Make sure you have `~/.composer/vendor/bin/` in your `PATH`.
 ```
 composer global require "squizlabs/php_codesniffer=*"
 ```
-- Move to **Standards** folder and clone this repository
+- Clone this repository
 ```
 // Version 2
 cd ~/.composer/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards
-git clone -b 0.2 git@github.com:wataridori/framgia-php-codesniffer.git Framgia
+git clone -b 0.2 git@github.com:wataridori/framgia-php-codesniffer.git FramgiaPHPCS
 
 // Version 3
 cd ~/.composer/vendor/squizlabs/php_codesniffer/src/Standards
-git clone git@github.com:wataridori/framgia-php-codesniffer.git Framgia
+git clone git@github.com:wataridori/framgia-php-codesniffer.git FramgiaPHPCS
 ```
+- Add its path to the PHP_CodeSniffer configuration:
+```
+phpcs --config-set installed_paths /path/to/FramgiaPHPCS
+```
+> NOTE: If you want to set multiple installed_paths, you can get old paths by command:
+> ```
+> phpcs --config-show installed_paths
+> ```
+> Then you can set multiple paths by command:
+> ```
+> phpcs --config-set installed_paths /absolute/path/1,/absolute/path/2,/yet/another/absolute/path/
+> ```
+
 - Check whether the Framgia Standard has been installed succesfully or not
 ```
 phpcs -i

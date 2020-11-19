@@ -12,7 +12,6 @@ use PHP_CodeSniffer\Util\Common;
 
 class ValidVariableNameSniff extends AbstractVariableSniff
 {
-
     /**
      * Tokens to ignore so that we can find a DOUBLE_COLON.
      *
@@ -22,7 +21,6 @@ class ValidVariableNameSniff extends AbstractVariableSniff
         T_WHITESPACE,
         T_COMMENT,
     ];
-
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -109,7 +107,7 @@ class ValidVariableNameSniff extends AbstractVariableSniff
             '|[^\\\]\${?([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)|',
             $tokens[$stackPtr]['content'],
             $matches
-            ) !== 0) {
+        ) !== 0) {
             foreach ($matches[1] as $varName) {
                 // If it's a php reserved var, then its ok.
                 if (in_array($varName, $phpReservedVars) === true) {
